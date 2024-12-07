@@ -39,12 +39,29 @@ class HttpCurrentWeather {
         if (response.statusCode == 200) {
           var data = convert.jsonDecode(response.body);
           String locationName = data['name'];
+          String weatherCondition = data['weather'][0]['main'];
           double temperature = data['main']['temp'] - 273.15;
+          double feelsLike = data['main']['feels_like'] - 273.15;
+          int humidity = data['main']['humidity'];
+          int visibility = data['visibility'];
+          double windSpeed = data['wind']['speed'];
+          int sunrise = data['sys']['sunrise'];
+          int sunset = data['sys']['sunset'];
+
+          if (weatherCondition.toLowerCase() == 'clouds') {}
+
           print('Weather data: $data');
 
           return {
-            'location': locationName,
+            'location': locationName.toString(),
+            'weatherCondition': weatherCondition.toString(),
             'temperature': temperature.toStringAsFixed(2),
+            'feelsLike': feelsLike.toStringAsFixed(2),
+            'humidity': humidity.toString(),
+            'visibility': visibility.toString(),
+            'windSpeed': windSpeed.toString(),
+            'sunrise': sunrise.toString(),
+            'sunset': sunset.toString(),
           };
         } else {
           print('Failed to load weather data');
@@ -63,7 +80,29 @@ class HttpCurrentWeather {
         http.Response response = await http.get(weatherUri);
         if (response.statusCode == 200) {
           var data = convert.jsonDecode(response.body);
+          String locationName = data['name'];
+          String weatherCondition = data['weather'][0]['main'];
+          double temperature = data['main']['temp'];
+          double feelsLike = data['main']['feels_like'];
+          int humidity = data['main']['humidity'];
+          int visibility = data['visibility'];
+          double windSpeed = data['wind']['speed'];
+          int sunrise = data['sys']['sunrise'];
+          int sunset = data['sys']['sunset'];
+
           print('Weather data: $data');
+
+          return {
+            'location': locationName.toString(),
+            'weatherCondition': weatherCondition.toString(),
+            'temperature': temperature.toStringAsFixed(2),
+            'feelsLike': feelsLike.toStringAsFixed(2),
+            'humidity': humidity.toString(),
+            'visibility': visibility.toString(),
+            'windSpeed': windSpeed.toString(),
+            'sunrise': sunrise.toString(),
+            'sunset': sunset.toString(),
+          };
         } else {
           print('Failed to load weather data');
         }
