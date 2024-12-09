@@ -33,9 +33,6 @@ class _HomeScreenState extends ConsumerState<HomeScreen>
     }
 
     return Scaffold(
-      // floatingActionButton: FloatingActionButton(onPressed: () {
-      //   ref.watch(weatherProvider.notifier).fetchCurrentLocationWeather();
-      // }),
       body: SingleChildScrollView(
         child: ConstrainedBox(
           constraints: BoxConstraints(
