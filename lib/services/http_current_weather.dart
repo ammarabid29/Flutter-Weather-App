@@ -1,5 +1,6 @@
 import 'dart:convert' as convert;
 
+import 'package:flutter_weather_app/models/weather.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:http/http.dart' as http;
 
@@ -52,17 +53,17 @@ class HttpCurrentWeather {
 
           print('Weather data: $data');
 
-          return {
-            'location': locationName.toString(),
-            'weatherCondition': weatherCondition.toString(),
-            'temperature': temperature.toStringAsFixed(2),
-            'feelsLike': feelsLike.toStringAsFixed(2),
-            'humidity': humidity.toString(),
-            'visibility': visibility.toString(),
-            'windSpeed': windSpeed.toString(),
-            'sunrise': sunrise.toString(),
-            'sunset': sunset.toString(),
-          };
+          return Weather(
+            locationName: locationName,
+            weatherCondition: weatherCondition,
+            temperature: temperature,
+            feelsLike: feelsLike,
+            humidity: humidity,
+            visibility: visibility,
+            windSpeed: windSpeed,
+            sunrise: sunrise,
+            sunset: sunset,
+          );
         } else {
           print('Failed to load weather data');
         }
@@ -92,17 +93,17 @@ class HttpCurrentWeather {
 
           print('Weather data: $data');
 
-          return {
-            'location': locationName.toString(),
-            'weatherCondition': weatherCondition.toString(),
-            'temperature': temperature.toStringAsFixed(2),
-            'feelsLike': feelsLike.toStringAsFixed(2),
-            'humidity': humidity.toString(),
-            'visibility': visibility.toString(),
-            'windSpeed': windSpeed.toString(),
-            'sunrise': sunrise.toString(),
-            'sunset': sunset.toString(),
-          };
+          return Weather(
+            locationName: locationName,
+            weatherCondition: weatherCondition,
+            temperature: temperature,
+            feelsLike: feelsLike,
+            humidity: humidity,
+            visibility: visibility,
+            windSpeed: windSpeed,
+            sunrise: sunrise,
+            sunset: sunset,
+          );
         } else {
           print('Failed to load weather data');
         }
